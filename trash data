@@ -1,0 +1,8 @@
+"""for i in list_of_dict:
+    try:
+        for j in path_list:
+            i["neighbors"].remove(j)
+    except ValueError:
+        #print("could not find {} in {}".format(j,i["neighbors"]))
+        continue
+"""
