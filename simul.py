@@ -80,7 +80,7 @@ selected_node = first_node_neighbor_list[random_index_again]
 #print(selected_node)
 path_list.append(selected_node)
 #print("Printing the starting edge *********")
-print(path_list)
+#print(path_list)
 
 def removal(node):
 
@@ -95,7 +95,7 @@ def removal(node):
 removal(first_node)
 removal(selected_node)
 
-print(list_of_dict)
+#print(list_of_dict)
 
 while True:
 
@@ -113,27 +113,41 @@ while True:
         next_neighbors = next_node_dict["neighbors"]
         #print("Printing next node neighbors *******")
         #print(next_neighbors)
-        if len(next_neighbors)==0:
+        if len(next_neighbors) == 0:
             break
 
         next_next_neighbor = random.choice(next_neighbors)
-        #print("Printing chosen neighbor")
+        #print("Printing chosen neighbor *******")
         #print(next_next_neighbor)
+
+        #removing the selected node from all neighbor lists
+        removal(next_next_neighbor)
+
         path_list.insert(0, next_next_neighbor)
 
-    else:
+    elif next_node == path_list[len(path_list)-1]:
 
         next_node_dict = list_of_dict[next_node-1]
         next_neighbors = next_node_dict["neighbors"]
         #print("Printing next node neighbors *******")
         #print(next_neighbors)
-        if len(next_neighbors)==0:
+        if len(next_neighbors) == 0:
             break
 
         next_next_neighbor = random.choice(next_neighbors)
-        #print("Printing chosen neighbor")
+        #print("Printing chosen neighbor *******")
         #print(next_next_neighbor)
+
+        #removing the selected node from all neighbor lists
+        removal(next_next_neighbor)
+
         path_list.append(next_next_neighbor)
-        #print(path_list)
 
 print(path_list)
+
+path_length = len(path_list)
+
+if path_length%2 == 0:
+    print("Player 1 won.")
+else:
+    print("Player 2 won.")
